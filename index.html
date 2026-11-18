@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Pengabmas - PEER-BHD SMK Negeri 6 Manado</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0ea5e9',
+                        secondary: '#0284c7'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-300 min-h-screen flex flex-col">
+
+    <!-- Header / Navbar -->
+    <header class="bg-gradient-to-r from-sky-700 via-sky-600 to-teal-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-center md:text-left">
+                <span class="bg-white/20 text-xs px-3 py-1 rounded-full font-semibold uppercase tracking-wider">Pengabdian Masyarakat (Pengabmas)</span>
+                <h1 class="text-xl md:text-2xl font-black mt-1">SMK NEGERI 6 MANADO</h1>
+                <p class="text-xs text-sky-100 mt-0.5">Mahasiswa D-III Keperawatan Poltekkes Kemenkes Manado Semester 3</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="toggleDarkMode()" class="bg-white/10 hover:bg-white/20 px-3 py-2 rounded-xl text-sm font-medium transition flex items-center gap-2 border border-white/20">
+                    <i id="modeIcon" class="fa-solid fa-moon"></i> <span id="modeText">Dark Mode</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Subheader Tema -->
+    <section class="bg-sky-900/10 dark:bg-sky-950/40 border-b border-sky-100 dark:border-sky-900/50 py-4 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-sm md:text-base font-bold text-sky-700 dark:text-sky-400 uppercase tracking-wide">Tema Kegiatan</h2>
+            <p class="text-base md:text-lg font-extrabold text-slate-900 dark:text-white mt-1 max-w-4xl mx-auto">
+                "PENGEMBANGAN MODEL PEER-BHD BERBASIS MEDIA PROMOSI KESEHATAN DIGITAL DAN SIMULASI DALAM MENINGKATKAN KESIAPSIAGAAN REMAJA SEBAGAI FIRST RESPONDER"
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full grid grid-cols-1 lg:grid-cols-4 gap-8">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="lg:col-span-1 space-y-2">
+            <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider px-3 mb-2">Menu Navigasi</h3>
+            <button onclick="switchTab('bhd')" id="btn-bhd" class="nav-btn w-full text-left px-4 py-3 rounded-xl font-semibold transition flex items-center gap-3 bg-sky-600 text-white shadow-md">
+                <i class="fa-solid fa-heart-pulse w-5 text-center"></i> 1. Panduan BHD
+            </button>
+            <button onclick="switchTab('bidai')" id="btn-bidai" class="nav-btn w-full text-left px-4 py-3 rounded-xl font-semibold transition flex items-center gap-3 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-sky-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700">
+                <i class="fa-solid fa-bandage w-5 text-center"></i> 2. Panduan Balut Bidai
+            </button>
+            <button onclick="switchTab('evakuasi')" id="btn-evakuasi" class="nav-btn w-full text-left px-4 py-3 rounded-xl font-semibold transition flex items-center gap-3 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-sky-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700">
+                <i class="fa-solid fa-truck-medical w-5 text-center"></i> 3. Stabilitas & Evakuasi
+            </button>
+            <button onclick="switchTab('video')" id="btn-video" class="nav-btn w-full text-left px-4 py-3 rounded-xl font-semibold transition flex items-center gap-3 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-sky-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700">
+                <i class="fa-solid fa-video w-5 text-center"></i> 4. Video Simulasi
+            </button>
+            <button onclick="switchTab('poster')" id="btn-poster" class="nav-btn w-full text-left px-4 py-3 rounded-xl font-semibold transition flex items-center gap-3 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-sky-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700">
+                <i class="fa-solid fa-image w-5 text-center"></i> 5. Poster Infografis
+            </button>
+        </aside>
+
+        <!-- Content Area -->
+        <section class="lg:col-span-3 bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 p-6 md:p-8">
+            
+            <!-- 1. PANDUAN BHD -->
+            <div id="content-bhd" class="tab-content space-y-6">
+                <div class="border-b border-slate-200 dark:border-slate-700 pb-4">
+                    <span class="text-sky-600 dark:text-sky-400 font-bold text-sm">Materi Utama 1</span>
+                    <h2 class="text-2xl font-extrabold mt-1">Panduan Bantuan Hidup Dasar (BHD)</h2>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Resusitasi Jantung Paru (RJP) untuk Awam berdasarkan AHA Guidelines 2020.</p>
+                </div>
+                <div class="bg-sky-50 dark:bg-slate-900/50 p-6 rounded-xl border border-sky-100 dark:border-slate-700">
+                    <h4 class="font-bold text-lg mb-2 flex items-center gap-2 text-sky-700 dark:text-sky-400">
+                        <i class="fa-solid fa-file-powerpoint"></i> Berkas Presentasi Lapangan (PPT)
+                    </h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">File presentasi resmi BHD untuk Awam.</p>
+                    <a href="https://docs.google.com/presentation/d/1a_Z-kmCoRMZd_OOTv8loaIOG0bz_A1we/edit?usp=sharing&ouid=102688988152909007680&rtpof=true&sd=true" target="_blank" class="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-700 text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition shadow-md">
+                        <i class="fa-solid fa-external-link-alt"></i> Buka / Download PPT BHD
+                    </a>
+                </div>
+            </div>
+
+            <!-- 2. PANDUAN BALUT BIDAI -->
+            <div id="content-bidai" class="tab-content space-y-6 hidden">
+                <div class="border-b border-slate-200 dark:border-slate-700 pb-4">
+                    <span class="text-sky-600 dark:text-sky-400 font-bold text-sm">Materi Utama 2</span>
+                    <h2 class="text-2xl font-extrabold mt-1">Panduan Pembidaian (Pertolongan Patah Tulang)</h2>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Prinsip dasar dan teknik pertolongan pertama pada cedera muskuloskeletal.</p>
+                </div>
+                <div class="bg-sky-50 dark:bg-slate-900/50 p-6 rounded-xl border border-sky-100 dark:border-slate-700">
+                    <h4 class="font-bold text-lg mb-2 flex items-center gap-2 text-sky-700 dark:text-sky-400">
+                        <i class="fa-solid fa-file-powerpoint"></i> Berkas Presentasi Lapangan (PPT)
+                    </h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">File presentasi materi pembidaian.</p>
+                    <a href="https://docs.google.com/presentation/d/16O0V5KT2nR1coPkCbRNuhc7AjjMsgNDB/edit?usp=sharing&ouid=102688988152909007680&rtpof=true&sd=true" target="_blank" class="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-700 text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition shadow-md">
+                        <i class="fa-solid fa-external-link-alt"></i> Buka / Download PPT Pembidaian
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3. STABILITAS & EVAKUASI -->
+            <div id="content-evakuasi" class="tab-content space-y-6 hidden">
+                <div class="border-b border-slate-200 dark:border-slate-700 pb-4">
+                    <span class="text-sky-600 dark:text-sky-400 font-bold text-sm">Materi Utama 3</span>
+                    <h2 class="text-2xl font-extrabold mt-1">Stabilisasi dan Evakuasi Korban</h2>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Alur keselamatan, penilaian primer ABCDE, triase, dan teknik evakuasi.</p>
+                </div>
+                <div class="bg-sky-50 dark:bg-slate-900/50 p-6 rounded-xl border border-sky-100 dark:border-slate-700">
+                    <h4 class="font-bold text-lg mb-2 flex items-center gap-2 text-sky-700 dark:text-sky-400">
+                        <i class="fa-solid fa-file-powerpoint"></i> Berkas Presentasi Lapangan (PPT)
+                    </h4>
+                    <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">File materi lengkap stabilisasi dan evakuasi korban.</p>
+                    <a href="https://docs.google.com/presentation/d/1-lY5zV8Zt-S_4cFepbW5RaB6kMTeAbg5/edit?usp=sharing&ouid=102688988152909007680&rtpof=true&sd=true" target="_blank" class="inline-flex items-center gap-2 bg-sky-600 hover:bg-sky-700 text-white px-5 py-2.5 rounded-xl font-semibold text-sm transition shadow-md">
+                        <i class="fa-solid fa-external-link-alt"></i> Buka / Download PPT Stabilisasi & Evakuasi
+                    </a>
+                </div>
+            </div>
+
+            <!-- 4. VIDEO SIMULASI -->
+            <div id="content-video" class="tab-content space-y-6 hidden">
+                <div class="border-b border-slate-200 dark:border-slate-700 pb-4">
+                    <span class="text-sky-600 dark:text-sky-400 font-bold text-sm">Media Interaktif</span>
+                    <h2 class="text-2xl font-extrabold mt-1">Video Simulasi Kegawatdaruratan</h2>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Saksikan demonstrasi langsung praktik BHD, pembidaian, dan evakuasi.</p>
+                </div>
+                <div class="aspect-video bg-slate-900 rounded-xl overflow-hidden flex flex-col items-center justify-center text-center p-6 border border-slate-700 shadow-inner">
+                    <i class="fa-solid fa-circle-play text-6xl text-sky-500 mb-3 animate-pulse"></i>
+                    <h4 class="text-lg font-bold text-white">Kolom Video Simulasi Siap Diisi</h4>
+                    <p class="text-sm text-slate-400 max-w-md mt-1">Video hasil praktik dan simulasi Anda akan disematkan di sini.</p>
+                </div>
+            </div>
+
+            <!-- 5. POSTER INFOGRAFIS (MENGGUNAKAN LINK GOOGLE DRIVE POSTER ASLI ANDA) -->
+            <div id="content-poster" class="tab-content space-y-6 hidden">
+                <div class="border-b border-slate-200 dark:border-slate-700 pb-4">
+                    <span class="text-sky-600 dark:text-sky-400 font-bold text-sm">Media Edukasi</span>
+                    <h2 class="text-2xl font-extrabold mt-1">Galeri Poster Infografis</h2>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">Klik tombol di bawah untuk melihat dan mengunduh poster asli karya Anda.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Poster 1: BHD -->
+                    <div class="bg-slate-100 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 text-center flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="w-full h-36 bg-sky-100 dark:bg-sky-950/60 rounded-lg flex items-center justify-center mb-3 border border-sky-200 dark:border-sky-800">
+                                <i class="fa-solid fa-heart-pulse text-4xl text-sky-600 dark:text-sky-400"></i>
+                            </div>
+                            <h4 class="font-bold text-base mt-2">Poster BHD (RJP)</h4>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Infografis panduan Bantuan Hidup Dasar.</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://drive.google.com/file/d/1u2ZNwyY03nWUiDjKmJnsPkNMzpj-iw9m/view?usp=sharing" target="_blank" class="w-full inline-block bg-sky-600 hover:bg-sky-700 text-white font-semibold text-xs py-2.5 px-4 rounded-lg transition shadow">
+                                <i class="fa-solid fa-eye mr-1"></i> Buka Poster Asli
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Poster 2: Pembidaian -->
+                    <div class="bg-slate-100 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 text-center flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="w-full h-36 bg-sky-100 dark:bg-sky-950/60 rounded-lg flex items-center justify-center mb-3 border border-sky-200 dark:border-sky-800">
+                                <i class="fa-solid fa-bandage text-4xl text-sky-600 dark:text-sky-400"></i>
+                            </div>
+                            <h4 class="font-bold text-base mt-2">Poster Pembidaian</h4>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Infografis pertolongan pertama patah tulang.</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://drive.google.com/file/d/19vdz_xAuZx7DKfNGkhLHWkmaFWs4SpB_/view?usp=sharing" target="_blank" class="w-full inline-block bg-sky-600 hover:bg-sky-700 text-white font-semibold text-xs py-2.5 px-4 rounded-lg transition shadow">
+                                <i class="fa-solid fa-eye mr-1"></i> Buka Poster Asli
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Poster 3: Stabilisasi & Evakuasi -->
+                    <div class="bg-slate-100 dark:bg-slate-900 p-5 rounded-xl border border-slate-200 dark:border-slate-700 text-center flex flex-col justify-between shadow-sm">
+                        <div>
+                            <div class="w-full h-36 bg-sky-100 dark:bg-sky-950/60 rounded-lg flex items-center justify-center mb-3 border border-sky-200 dark:border-sky-800">
+                                <i class="fa-solid fa-truck-medical text-4xl text-sky-600 dark:text-sky-400"></i>
+                            </div>
+                            <h4 class="font-bold text-base mt-2">Poster Stabilisasi & Evakuasi</h4>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Infografis alur evakuasi dan gawat darurat.</p>
+                        </div>
+                        <div class="mt-4">
+                            <a href="https://drive.google.com/file/d/1i-u-1ya1i4T7xjf04YyLCTINBmKY5vPa/view?usp=sharing" target="_blank" class="w-full inline-block bg-sky-600 hover:bg-sky-700 text-white font-semibold text-xs py-2.5 px-4 rounded-lg transition shadow">
+                                <i class="fa-solid fa-eye mr-1"></i> Buka Poster Asli
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-6 text-center text-xs text-slate-500 mt-auto">
+        <p>© 2026 Mahasiswa D-III Keperawatan Poltekkes Kemenkes Manado. Pengabmas SMK Negeri 6 Manado.</p>
+    </footer>
+
+    <!-- JavaScript Interaksi -->
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById('content-' + tabId).classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.className = "nav-btn w-full text-left px-4 py-3 rounded-xl font-semibold transition flex items-center gap-3 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-sky-50 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700";
+            });
+
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.className = "nav-btn w-full text-left px-4 py-3 rounded-xl font-semibold transition flex items-center gap-3 bg-sky-600 text-white shadow-md";
+        }
+
+        function toggleDarkMode() {
+            const html = document.documentElement;
+            const modeIcon = document.getElementById('modeIcon');
+            const modeText = document.getElementById('modeText');
+
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                modeIcon.className = "fa-solid fa-moon";
+                modeText.innerText = "Dark Mode";
+            } else {
+                html.classList.add('dark');
+                modeIcon.className = "fa-solid fa-sun";
+                modeText.innerText = "Light Mode";
+            }
+        }
+    </script>
+</body>
+</html>
